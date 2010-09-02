@@ -13,8 +13,8 @@ set AppleScript's text item delimiters to "x"
 set res to "" & windowWidth & "x" & windowHeight
 
 if res is "" then
-  display dialog "You need to enter a correct response"
-  return
+	display dialog "You need to enter a correct response"
+	return
 end if
 set {windowWidth, windowHeight} to text items of res
 
@@ -22,7 +22,7 @@ set AppleScript's text item delimiters to ""
 
 -- Works with most setups
 tell application "Finder"
-  set {screen_top, screen_left, screen_width, screen_height} to bounds of window of desktop
+	set {screen_top, screen_left, screen_width, screen_height} to bounds of window of desktop
 end tell
 
 -- NOTE This may work better with some multi-monitor setups
@@ -32,31 +32,33 @@ end tell
 -- end tell
 
 tell application "System Events"
-  set myFrontMost to name of first item of (processes whose frontmost is true)
+	set myFrontMost to name of first item of (processes whose frontmost is true)
 end tell
 
 tell application "Finder"
-  set {desktopTop, desktopLeft, desktopRight, desktopBottom} to bounds of desktop
+	set {desktopTop, desktopLeft, desktopRight, desktopBottom} to bounds of desktop
 end tell
 
 try
-  tell application "System Events"
-    tell process myFrontMost
-      set {{w, h}} to size of drawer of window 1
-    end tell
-  end tell
+	tell application "System Events"
+		tell process myFrontMost
+			set {{w, h}} to size of drawer of window 1
+		end tell
+	end tell
 on error
-  set {w, h} to {0, 0}
+	set {w, h} to {0, 0}
 end try
 
 tell application "System Events"
-  tell process myFrontMost
-    try
-      set {{w, h}} to size of drawer of window 1
-    on error
-      set {w, h} to {0, 0}
-    end try
-    set position of window 1 to {((screen_width - windowWidth - w) / 2), ((screen_height - windowHeight) / 2.0) - desktopTop}
-    set size of window 1 to {windowWidth, windowHeight}
-  end tell
+	tell process myFrontMost
+		try
+			set {{w, h}} to size of drawer of window 1
+		on error
+			set {w, h} to {0, 0}
+		end try
+		set {x, y} to {((screen_width - windowWidth - w) / 2), ((screen_height - windowHeight) / 2.0) - desktopTop}
+		set position of window 1 to {x, y}
+		set size of window 1 to {windowWidth, windowHeight}
+		-- display dialog "X " & x & "Y " & y
+	end tell
 end tell

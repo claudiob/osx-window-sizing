@@ -4,20 +4,14 @@ OSX Window Sizing
 OSX Window Sizing is a set of apps that makes it dead-simple to change the size of 
 your windows.
 
-This Topfunky fork includes several extra scripts to resize specific apps to certain places on the screen. I have them bound to ctrl-shift-[1,2,3,4,5] for easy access. Use them as a starting point for your own window management.
+This fork includes extra scripts to resize specific apps to certain places on the screen. I have them bound to ctrl-[1,2,3,4,5,6,7,8,9] for easy access. Use them as a starting point for your own window management.
 
-maximize
+sizes
 --------
 
-Maximize will maximize your windows to full-screen. It will take drawers into consideration
-as well, so applications like TextMate will truly fill the screen. This works even in 
-applications with Zoom buttons that don't truly maximize (like Safari).
-
-center
-------
-
-Center will ask you for a pixel size (e.g. "1024x768") and resize your application window
-to that size. It will then center the application on the screen. It defaults to 800x600.
+* ctrl-[1,2,3,4] resize the current window to a quarter of the screen (top-left, top-right, bottom-left, bottom-right)
+* ctrl-[5] resizes the current window to full screen
+* ctrl-[6,7,8,9] resize the current window to half of the screen (left, right, top, bottom)
 
 Installation
 ------------
